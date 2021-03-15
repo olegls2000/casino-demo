@@ -11,4 +11,4 @@ CREATE TABLE IF NOT EXISTS user_account
     balance    int default 0 NOT NULL
 );
 
-drop table user_account;
+--drop table user_account;
