@@ -17,12 +17,14 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
 @SuperBuilder
 @NoArgsConstructor
+@ToString
 @Entity
 @Table(name = "simple_game_result")
 public class SimpleGameResult implements Serializable {

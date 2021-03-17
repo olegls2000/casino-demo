@@ -11,5 +11,6 @@ import com.bta.casino.model.SimpleBet;
 public interface SimpleBetRepository
 		extends CrudRepository<SimpleBet, Long> {
 
-	List<SimpleBet> findAllByActive(Boolean active);
+	//select * from simple_bet where active = true;
+	List<SimpleBet> findAllByActiveIsTrue();
 }

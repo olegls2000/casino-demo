@@ -20,6 +20,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Getter
 @Setter
@@ -42,6 +44,7 @@ public class UserAccount implements Serializable {
 	@Column(name = "tax_number")
 	private long taxNumber;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate birthday;
 
 	private String username;
