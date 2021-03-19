@@ -1,5 +1,7 @@
 package com.bta.casino.service.impl;
 
+import static java.lang.Boolean.FALSE;
+
 import java.time.LocalDateTime;
 
 import lombok.extern.slf4j.Slf4j;
@@ -33,20 +35,11 @@ public class SimpleGameServiceImpl implements SimpleGameService {
 		log.info("SimpleGameServiceImpl.spin() ....");
 		final SimpleGameResult result = simpleGameResultRepository.save(generateSimpleGameResult());
 		log.info("Game result: " + result);
-/*		final List<SimpleBet> activeBets = simpleBetRepository.findAllByActiveIsTrue();
-		for (SimpleBet bet : activeBets) {
-			final SimpleResult simpleBet = bet.getBet();
-			final SimpleResult simpleResult = result.getResult();
-			if (simpleBet == simpleResult) {
-				UserAccount userAccount = bet.getUserAccount();
-				int beforeGameBalance = userAccount.getBalance();
-				int afterGameBalance = beforeGameBalance + (2 * bet.getBetValue());
-				userAccount.setBalance(afterGameBalance);
-				userAccountRepository.save(userAccount);
-			}
-		}
-*/
+
+
 		simpleBetRepository.findAllByActiveIsTrue().stream()
+				.peek(sb -> sb.setActive(FALSE))
+				.peek(sb -> simpleBetRepository.save(sb))
 				.filter(sb -> sb.getBet() == result.getResult())
 				.forEach(sb -> {
 					final UserAccount userAccount = sb.getUserAccount();

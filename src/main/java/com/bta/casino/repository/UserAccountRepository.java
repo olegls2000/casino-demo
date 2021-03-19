@@ -8,4 +8,6 @@ import com.bta.casino.model.UserAccount;
 
 @Repository
 public interface UserAccountRepository extends CrudRepository<UserAccount, Long> {
+	//select * from User_Account where username = ?
+	UserAccount findByUsername(String username);
 }

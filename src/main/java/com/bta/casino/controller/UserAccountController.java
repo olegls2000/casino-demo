@@ -1,6 +1,5 @@
 package com.bta.casino.controller;
 
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,7 @@ public class UserAccountController {
 
 	@GetMapping("/registration")
 	public String getRegistrationView() {
-		return "page";
+		return "user/registration";
 	}
 
 	@PostMapping("/registration")

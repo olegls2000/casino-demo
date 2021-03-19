@@ -19,6 +19,6 @@ public class CasinoDemoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		//gameTrigger.startGames(10_000l, 3);
+		//gameTrigger.startGames(20_000l, 1);
 	}
 }
