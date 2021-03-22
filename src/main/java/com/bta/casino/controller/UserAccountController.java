@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bta.casino.model.UserAccount;
-import com.bta.casino.repository.UserAccountRepository;
+import com.bta.casino.service.UserAccountService;
 
 @Slf4j
 @Controller
@@ -20,7 +20,7 @@ import com.bta.casino.repository.UserAccountRepository;
 public class UserAccountController {
 
 	@Autowired
-	private UserAccountRepository userAccountRepository;
+	private UserAccountService userAccountService;
 
 	@GetMapping("/registration")
 	public String getRegistrationView() {
@@ -30,9 +30,7 @@ public class UserAccountController {
 	@PostMapping("/registration")
 	public ResponseEntity<UserAccount> registrationUser(
 			@ModelAttribute UserAccount userAccount) {
-		userAccountRepository.save(userAccount);
-		log.info("User created.");
-
-		return new ResponseEntity<>(userAccount, HttpStatus.OK);
+		UserAccount createdUserAccount = userAccountService.registration(userAccount);
+		return new ResponseEntity<>(createdUserAccount, HttpStatus.OK);
 	}
 }
