@@ -1,6 +1,6 @@
 <#import "../common/page.ftl" as common>
 <@common.page>
-    <form action="/bet" method="post">
+    <form action="/bet/new" method="post">
         <label for="bet">Chose option:</label>
         <select name="bet">
             <option value="RED">Red</option>

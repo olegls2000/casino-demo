@@ -11,7 +11,8 @@
 
     <div class="container">
         <div>
-            <a href="/spin">Play game</a>
+            <a class="btn btn-secondary" href="/spin" role="button">Play game</a>
+            <a class="btn btn-primary" href="/bet/new" role="button">New Bet</a>
         </div>
 
         <#nested>

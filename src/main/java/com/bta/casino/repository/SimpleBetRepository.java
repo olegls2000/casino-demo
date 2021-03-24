@@ -1,5 +1,6 @@
 package com.bta.casino.repository;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
@@ -13,4 +14,11 @@ public interface SimpleBetRepository
 
 	//select * from simple_bet where active = true;
 	List<SimpleBet> findAllByActiveIsTrue();
+
+	/*
+	select * from simple_bet sb
+	 join user_account ua on sb.user_account_id = ua.id
+	 where ua.username = ?;
+	*/
+	Collection<SimpleBet> findAllByUserAccountUsername(String username);
 }
