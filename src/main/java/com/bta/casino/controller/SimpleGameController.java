@@ -16,8 +16,12 @@ public class SimpleGameController {
 	private SimpleGameService simpleGameService;
 
 	@GetMapping("/spin")
-	public ResponseEntity triggerSimpleGame(){
+	public ModelAndView triggerSimpleGame(){
 		simpleGameService.spin();
-		return new ResponseEntity(null, HttpStatus.OK);
+
+		final Map<String, Object> model = new HashMap<>();
+		model.put("bets", simpleBetRepository.findAllByUserAccountUsername(getCurrentUserUsername()));
+
+		return new ModelAndView("bet/all", model);
 	}
 }
